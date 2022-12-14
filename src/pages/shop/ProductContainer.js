@@ -17,7 +17,10 @@ const ProductContainer = (props) => {
         <h2 className=" font-bold">{productName}</h2>
         <span>&#x20B1; {price}</span>
       </div>
-      <button className="mt-4" onClick={() => addToCart(id)}>
+      <button
+        className="mt-4 border-2 border-slate-800 px-2 rounded-lg"
+        onClick={() => addToCart(id)}
+      >
         Add to cart {cartItemAmout > 0 && <>({cartItemAmout})</>}
       </button>
     </div>
