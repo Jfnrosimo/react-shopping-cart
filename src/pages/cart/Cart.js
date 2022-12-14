@@ -19,27 +19,41 @@ const Cart = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="">
       <div>
-        <h1 className="text-2xl text-center mt-5">Your Cart Items</h1>
+        <h1 className="text-4xl font-bold text-center mt-5">Your Cart Items</h1>
       </div>
-      <div className="">
-        {PRODUCTS.map((product) => {
-          if (cartItems[product.id] !== 0) {
-            return <CartProductContainer data={product} />;
-          }
-          return null;
-        })}
-      </div>
-      {getTotalCartAmount() > 0 ? (
+      <div className="flex justify-evenly">
         <div>
-          <p>Subtotal: &#x20B1;{getTotalCartAmount()}</p>
-          <button onClick={() => navigate("/")}>Continue Shopping</button>
-          <button>Checkout</button>
+          {PRODUCTS.map((product) => {
+            if (cartItems[product.id] !== 0) {
+              return <CartProductContainer data={product} />;
+            }
+            return null;
+          })}
         </div>
-      ) : (
-        <h1>Your Cart is Empty</h1>
-      )}
+        {getTotalCartAmount() > 0 ? (
+          <div className="text-center my-5">
+            <p>
+              Subtotal:
+              <span className="text-xl font-bold">
+                &#x20B1;{getTotalCartAmount()}
+              </span>
+            </p>
+            <button
+              className="my-2 py-2 px-3 mx-1 border bg-slate-900 text-slate-200"
+              onClick={() => navigate("/")}
+            >
+              Continue Shopping
+            </button>
+            <button className="my-2 py-2 px-3 mx-1 border bg-slate-900 text-slate-200">
+              Checkout
+            </button>
+          </div>
+        ) : (
+          <h1 className="text-center">Your Cart is Empty</h1>
+        )}
+      </div>
     </div>
   );
 };
